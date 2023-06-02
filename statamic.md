@@ -261,3 +261,4 @@ It’s easy to [switch from flat-file users to database users](https://statamic.
 - [Laracasts - Learn Statamic with Jack](https://laracasts.com/series/learn-statamic-with-jack)
 - [Statamic Documentation](https://statamic.dev/)
 - [Scribehow: Guide for clients purchasing Statamic licenses](https://scribehow.com/shared/Purchasing_a_Statamic_License__TrjO7h8iRF6xzXeRTchhew)
+- [Antlers eBook by Johnathan Koster (available on Google Drive)](https://drive.google.com/file/d/1RCOkjZ606ErGUTe18YWoHnF7WNve41FZ/view?usp=sharing)
