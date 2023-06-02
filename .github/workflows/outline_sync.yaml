@@ -1,0 +1,52 @@
+name: "Sync README to Outline"
+
+on:
+  push:
+    paths:
+      - "statamic.md"
+    branches:
+      - "main"
+
+jobs:
+  outline:
+    name: "Sync README to Outline"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: List changed files
+        id: getfile
+        run: |
+          echo "::set-output name=files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -e '.*\.md$' | xargs)"
+
+      - name: Sync to Outline
+        if: steps.getfile.outputs.files
+        uses: steadfast-collective/outline-sync-action@v1.0.1
+        with:
+          files: ${{ steps.getfile.outputs.files }}
+        env:
+          OUTLINE_BASE_URL: https://docs.steadfastcollective.com/api/
+          OUTLINE_API_KEY: ${{ secrets.OUTLINE_API_KEY }}
+          OUTLINE_COLLECTION_ID: ${{ secrets.OUTLINE_COLLECTION_ID }}
+
+      - name: Show changes
+        id: changes
+        run: |
+          echo "::set-output name=files::$(git status --porcelain | sed -e 's!.*/!!' | xargs)"
+
+      - name: Commit changed files
+        if: steps.changes.outputs.files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Updated markdown [ci skip]" -a
+
+      - name: Push changed files
+        if: steps.changes.outputs.files
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

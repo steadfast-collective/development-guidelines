@@ -1,3 +1,8 @@
+---
+title: 'Statamic'
+doc_id: 'EDxq7d3wVv'
+---
+
 # Statamic
 
 ## Starter Kits
