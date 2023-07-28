@@ -120,7 +120,7 @@ Behind the scenes, Statamic is visiting the URL of every single entry in your si
 
 To workaround this, there’s a custom command you can copy into your project which will visit all the URLs for your entries, with a few seconds of a gap between them.
 
-Example: <https://github.com/steadfast-collective/enclave/blob/develop/app/Console/Commands/RebuildStaticCache.php>
+Example: See `RebuildStaticCache` in [this article](https://steadfastcollective.com/articles/handling-statamic-static-cache-invalidation-on-large-sites).
 
 #### Clearing pages on demand
 
