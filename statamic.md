@@ -88,9 +88,11 @@ You may wish to [install Laravel Horizon](https://laravel.com/docs/10.x/horizon#
 
 ## Setting up on a server
 
-We’re still waiting on Positive Internet to document the process of how we can create sites ourselves.
+We’re still waiting on Positive Internet to document the process of how we can create sites ourselves. In the meantime, send a message in `#team-development` and someone will get in touch with Positive to setup a site.
 
-However, we will need to follow the steps outlined here as the configuration for Laravel Storage & forms needs to be tweaked: <https://statamic.dev/tips/zero-downtime-deployments>
+Sites hosted with Positive use Envoyer instead of Laravel Forge. Envoyer works slightly differently, so there's [a few things you'll need to tweak](https://statamic.dev/tips/zero-downtime-deployments) in your project to prepare for deployment.
+
+Statamic sites should be configured to use the `redis` cache driver, rather than the `file` cache driver (the default). 
 
 ## Static Caching
 
